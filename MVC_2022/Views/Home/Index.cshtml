@@ -1,0 +1,30 @@
+﻿@model List<MVC_2024.Models.EstoqueModel>
+
+<h2>Lista de Estoques</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nome</th>
+            <th>Quantidade</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var estoque in Model)
+        {
+            <tr>
+                <td>@estoque.Id</td>
+                <td>@estoque.Nome</td>
+                <td>@estoque.Quantidade</td>
+                <td>
+                    <a href="@Url.Action("Edit", "Estoque", new { id = estoque.Id })" class="btn btn-primary">Editar</a>
+                    <a href="@Url.Action("Delete", "Estoque", new { id = estoque.Id })" class="btn btn-danger">Excluir</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a href="@Url.Action("Create", "Estoque")" class="btn btn-success">Adicionar Novo Estoque</a>

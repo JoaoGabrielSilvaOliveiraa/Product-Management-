@@ -1,0 +1,41 @@
+﻿@model MVC_2024.Models.MovimentacaoModel
+
+@{
+    ViewData["Title"] = "Editar Movimentação";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<h4>Movimentação</h4>
+<hr>
+
+<form asp-action="Edit" method="post">
+    <div class="form-group">
+        <label for="estoqueId">Estoque</label>
+        <select class="form-control" asp-for="estoqueId" asp-items="@(new SelectList(ViewBag.Estoques, "Id", "Nome", Model.estoqueId))">
+            <option value="">Selecione o Estoque</option>
+        </select>
+        <span asp-validation-for="estoqueId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label for="tipoMovimentacao">Tipo de Movimentação</label>
+        <input type="text" class="form-control" asp-for="tipoMovimentacao" />
+        <span asp-validation-for="tipoMovimentacao" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label for="quantidade">Quantidade</label>
+        <input type="number" class="form-control" asp-for="quantidade" />
+        <span asp-validation-for="quantidade" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label for="DataMovimentacao">Data da Movimentação</label>
+        <input type="date" class="form-control" asp-for="DataMovimentacao" />
+        <span asp-validation-for="DataMovimentacao" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Salvar</button>
+    <a href="@Url.Action("Index", "Movimentacao")" class="btn btn-secondary">Cancelar</a>
+</form>

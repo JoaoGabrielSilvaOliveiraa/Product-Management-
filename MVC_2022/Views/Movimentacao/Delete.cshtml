@@ -1,0 +1,23 @@
+﻿@model MVC_2024.Models.MovimentacaoModel
+
+@{
+    ViewData["Title"] = "Excluir Movimentação";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<h4>Tem certeza que deseja excluir esta movimentação?</h4>
+<hr>
+
+<div>
+    <h5>Estoque: @Model.Estoque.Nome</h5>
+    <p><strong>Tipo de Movimentação:</strong> @Model.tipoMovimentacao</p>
+    <p><strong>Quantidade:</strong> @Model.quantidade</p>
+    <p><strong>Data da Movimentação:</strong> @Model.DataMovimentacao.ToString("dd/MM/yyyy")</p>
+</div>
+
+<form asp-action="DeleteConfirmed" method="post">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Excluir</button>
+    <a href="@Url.Action("Index", "Movimentacao")" class="btn btn-secondary">Cancelar</a>
+</form>
